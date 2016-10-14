@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Notes
 {
     public static void main( String[] args )
@@ -74,6 +76,99 @@ public class Notes
             System.out.println( "rolled a 4, 5, or 6" );
         }
         
+        /*
+         * When comparing Strings (or any object), the equality operator (==)
+         *      returns true if the two variables reference the same object
+         *      (i.e., same memory location, pointer)
+         *  
+         *  If that isn't what we want (and it probably isn't), we need
+         *      to use the equals method on the object.
+         */
+        Scanner s = new Scanner(System.in);
+        System.out.print( "enter two strings: " );
+        String str1 = s.next();
+        String str2 = s.next();
+        
+        // this checks if the references are equal; not the set of characters
+        if( str1 == str2 )
+        {
+            System.out.println( "string references are equal!" );
+        }
+        else
+        {
+            System.out.println( "string references are not equal!" );
+        }
+        
+        // this checks if the strings have the same set of characters
+        if( str1.equals( str2 ))
+        {
+            System.out.println( "strings are equal!" );
+        }
+        else
+        {
+            System.out.println( "strings are not equal!" );
+        }
+        
+        /*
+         * Determine which string comes first lexographically
+         *      (kind of like alphabetically; check notes) using
+         *      the compareTo method of the String class.
+         *      
+         *  compareTo returns
+         *      0: if the strings contain the same characters
+         *      < 0: if str1 < str2 lexographically
+         *      > 0: if str1 > str2 lexographically
+         */
+        int result = str1.compareTo( str2 );
+        String firstStr = null;
+        
+        if( result < 0 )
+        {
+            firstStr = str1;
+        }
+        else if( result > 0 )
+        {
+            firstStr = str2;
+        }
+        
+        if( firstStr != null )
+        {
+            System.out.println( "The first string is: " + firstStr );
+            /*
+             * if we attempt to invoke a method on a variable whose value is
+             *      null, that generates a null pointer exception.
+             *  Avoid this by checking if a variable is null first!
+             */
+            System.out.println( "Its length is: " + firstStr.length());
+        }
+        else
+        {
+            System.out.println( "The strings are equal." );
+        }
+        
+    }
+    
+    public static boolean floatsAreEqual( double num1, double num2 )
+    {
+        /*
+         * if we use the equality operator (e.g., ==) for doubles, it
+         *      will only return true if all binary digits match
+         *  This probably is not the case and not what we want.
+         *  We will check if they are "close enough" (i.e., epsilon value)
+         */
+        final double EPSILON = 1e-14;
+        
+        if( Math.abs( num1 - num2 ) < EPSILON )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+        // don't have to use an if statement
+        // return (Math.abs( num1 - num2 ) < EPSILON );
     }
     
 }
