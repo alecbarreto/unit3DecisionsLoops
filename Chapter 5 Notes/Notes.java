@@ -1,3 +1,4 @@
+import java.util.Scanner;
 
 public class Notes
 {
@@ -75,6 +76,99 @@ public class Notes
         else
         {
             System.out.println( "rolled a 4" );
+        }
+    }
+    
+    public static boolean floatsAreEqual( double num1, double num2 )
+    {
+        /*
+         * If we use the equality operator (==) for double, its
+         *      will only return true if all binary digits match.
+         *  This is probably not the case and not what we want.
+         *  We will check if they are "close enough" (i.e., epsilon value)
+         */
+        final double EPSILON = 1e-14;
+        
+        if( Math.abs( num1 - num2 ) < EPSILON )
+        {
+            return true;
+        }
+        else
+        {
+            return false;
+        }
+        
+        // don't have to use an if statement
+        //return ( Math.abs( num1 - num2 ) < EPSILON );
+    }
+    
+    public static void stringExamples()
+    {
+        Scanner s = new Scanner( System.in );
+        System.out.print( "Enter two strings: " );
+        String str1 = s.next();
+        String str2 = s.next();
+        
+        /*
+         * The equality operator (==) returns true if the two variables
+         *      (e.g., str1 and str2) contain the same value. For objects,
+         *      including Strings, this means they contain the same reference.
+         *      That is, they refer to the same object in memory, not that
+         *      two Strings have the same sequence of characters.
+         */
+        if( str1 == str2 )
+        {
+            System.out.println( "string references are equal." );
+        }
+        else
+        {
+            System.out.println( "string references are not equal." );
+        }
+        
+        /*
+         * The equals method returns true if the two objects are equal.
+         *      What equals means is defined by that class. For Strings
+         *      it means that the two objects have the same sequence of
+         *      characters.
+         */
+        if( str1.equals( str2 ))
+        {
+            System.out.println( "strings are equal" );
+        }
+        else
+        {
+            System.out.println( "strings are not equal" );
+        }
+        
+        /*
+         * We will determine which string comes first lexographically
+         *  using the compareTo method of the String class.
+         *  
+         *  compareTo returns
+         *      0:   if the strings are equal (same sequence of characters)
+         *      < 0: if str1 < str2 lexographically
+         *      > 0: if str1 > str2 lexographically
+         */
+        int result = str1.compareTo( str2 );
+        String firstStr = null; //assigning the null reference to firstStr
+        
+        if( result < 0 )
+        {
+            firstStr = str1;
+        }
+        else if( result > 0 )
+        {
+            firstStr = str2;
+        }
+        
+        if( firstStr != null )
+        {
+            System.out.println( "The first string is: " + firstStr );
+            System.out.println( "Its length is: " + firstStr.length());
+        }
+        else
+        {
+            System.out.println( "Strings are equal." );
         }
     }
 }
