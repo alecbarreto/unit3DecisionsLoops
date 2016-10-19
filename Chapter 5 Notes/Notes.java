@@ -171,6 +171,152 @@ public class Notes
         // return (Math.abs( num1 - num2 ) < EPSILON );
     }
     
+    public static void printStudentClass( int gradeNumber )
+    {
+        /*
+         * switch staement
+         *      another conditional (like if statement)
+         *      preferred when evaluating several discrete values
+         *      flow of execution jumps to the branch matching the expression
+         *      can be used for byte, short, char, int primitives types
+         *      can be used for enumerations and the String class
+         */
+        switch( gradeNumber )
+        {
+            /*
+             * can have multiple cases that share the same statements
+             */
+            case 6:
+            case 7:
+            case 8:
+            {
+                System.out.println( "Junior High" );
+                
+                /*
+                 * break casuses the flow of execution to leave the switch
+                 *  (without a break, the flow of execution continues into
+                 *      the next case)
+                 */
+                break;
+            }
+            case 9:
+            {
+                System.out.println( "Freshmen" );
+                break;
+            }
+            case 10:
+            {
+                System.out.println( "Sophomore" );
+                break;
+            }
+            case 11:
+            {
+                System.out.println( "Junior" );
+                break;
+            }
+            case 12:
+            {
+                System.out.println( "Senior" );
+                break;
+            }
+            /*
+             * default matches everything not matched by one of the cases
+             */
+            default:
+            {
+                System.out.println( "Elementary" );
+                break;
+            }
+        }
+    }
+    
+    /*
+     * enumeration is a set of objects that represent a related set of choices
+     *      usually compared with the equality operator (==)
+     *      enumerations are capitalized like classes
+     *      enumerated values are capitalized like constants
+     */
+    public enum FilingStatus { SINGLE, MARRIED, HEAD_OF_HOUSEHOLD };
+    
+    
+    /*
+     * Filing Status            Standard Deduction
+     * single                   $6300
+     * married filing jointly   $12600
+     * head of household        $9250
+     */
+    public static double calculateStandardDeduction( FilingStatus status )
+    {
+        double deduction = 0;
+        
+        switch( status )
+        {
+            case SINGLE:
+            {
+                deduction = 6300;
+                break;
+            }
+            case MARRIED:
+            {
+                deduction = 12600;
+                break;
+            }
+            case HEAD_OF_HOUSEHOLD:
+            {
+                deduction = 9250;
+                break;
+            }
+        }
+        
+        if( status == FilingStatus.MARRIED )
+        {
+            System.out.println( "must file jointly for this deduction" );
+        }
+        
+        return deduction;
+    }
+    
+    public static void incrementExample()
+    {
+        /*
+         * post increment / decrement operators
+         *      equivalent to adding or subtracting 1
+         *      returns the current value and then increments or decrements
+         */
+        int b = 7;
+        int a = b++;
+        
+        System.out.println( "a = " + a + "; b = " + b ); // a = 7; b = 8
+        
+        /*
+         * pre increment / decrement operators
+         *      equivalent to adding or subtracting 1
+         *      returns the value after the increment or decrement
+         */
+        int c = 7;
+        int d = ++c;
+        
+        System.out.println( "d = " + d + "; c = " + c ); // d = 8; c = 8
+        
+        /*
+         * assignment operators: +=, -=, *=, /=, %=
+         *      same as in Python
+         *      performs the specfiied operation and then assigns the
+         *          resulting value
+         */
+        int x = 7;
+        int y = 7;
+        int z = 7;
+        
+        x = x + 1;
+        y++;
+        z += 1;
+        
+        System.out.println( "x = " + x + "; y = " + y + "; z = " + z );
+        
+    }
+    
+    
 }
 
 
