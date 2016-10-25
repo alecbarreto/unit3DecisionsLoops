@@ -1,3 +1,5 @@
+import java.util.Scanner;
+
 public class Notes
 {
     public static void main( String[] args )
@@ -64,10 +66,109 @@ public class Notes
         {
             System.out.println( i );
         }
+    }
+    
+    public static void doExample()
+    {
+        /*
+         * do loop (do-while loop):
+         *      1. executes the body of the loop
+         *      2. evaluates the boolean condition (like an if statement)
+         *          * if true, executes the body of the loop again
+         *          * if fase, continues after the loop
+         */
+        int count = 1;  // initialization
         
+        do
+        {
+            System.out.println( count ); // body
+            
+            count +=1 ;     // update condition variable
+        }
+        while( count <= 5 );    // condition
+    }
+    
+    public static void sentinelExample()
+    {
+        /*
+         * Sentinel Values
+         *      values used to terminate a while/do loop
+         *      often these values are entered by the user
+         */
         
+        int sum = 0;
+        int value;
+        Scanner s = new Scanner( System.in );
         
-                    
+        do
+        {
+            // 0 is the sentinel value
+            System.out.print( "enter an integer (0 to quit): " );
+            value = s.nextInt();
+            sum += value;
+        }
+        while( value != 0 );
+        
+        System.out.println( "sum: " + sum );
+    }
+    
+    public static void sentinelExample2()
+    {
+        int sum = 0;
+        int value;
+        Scanner s = new Scanner( System.in );
+        
+        while( true )
+        {
+            // -1 is the sentinel value
+            System.out.print( "enter an integer (-1 to quit): " );
+            value = s.nextInt();
+            
+            if( value == -1 )
+            {
+                /*
+                 * exit the inner-most loop
+                 *  (similar behavior as used in switch statement)
+                 *  
+                 *  "done with this loop"
+                 */
+                break;
+            }
+            
+            sum += value;
+        }
+        
+        System.out.println( "sum: " + sum );
+    }
+
+
+    public static void sentinelExample3()
+    {
+        int sum = 0;
+        int value = 0;
+        Scanner s = new Scanner( System.in );
+        
+        while( value != -1 )
+        {
+            // -1 is the sentinel value
+            System.out.print( "enter an integer (-1 to quit): " );
+            value = s.nextInt();
+            
+            if( value == -1 )
+            {
+                /*
+                 *  1. skips to the end of the inner-most loop
+                 *  2. re-evaluates the loop condition at that point
+                 *  
+                 *  "done with this iteration"
+                 */
+                continue;
+            }
+            
+            sum += value;
+        }
+        
+        System.out.println( "sum: " + sum );
     }
 }
 
