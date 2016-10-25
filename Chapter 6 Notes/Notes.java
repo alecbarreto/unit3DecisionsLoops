@@ -170,6 +170,35 @@ public class Notes
         
         System.out.println( "sum: " + sum );
     }
+    
+    /*
+     * Loop Algorithm #1: Sum and Average
+     * reads a series of numbers
+     * calculates the sum and average of the numbers
+     */
+    public static void sumAndAverage()
+    {
+        Scanner s = new Scanner( System.in );
+        double sum = 0;
+        double average = 0;
+        int count = 0;
+        
+        System.out.println( "Enter a series of numbers (any letter to quit)" );
+        
+        while( s.hasNextDouble())
+        {
+            double value = s.nextDouble();
+            sum += value;
+            count++;
+        }
+        
+        if( count > 0 )
+        {
+            average = sum / count;
+        }
+        
+        System.out.println( "sum: " + sum + " average: " + average );
+    }
 }
 
 
