@@ -72,6 +72,16 @@ public class CommonLoopAlgorithms
      */
     public static void findFirstMatch()
     {
+        System.out.print("Please enter a series of words separated by whitespace: ");
+        Scanner s = new Scanner(System.in);
+        String series = s.next();
+        int count = 0;
+        while (series.length()<6)
+        {
+            series = s.next();
+            count+=1;
+        }
+        System.out.println("Count: "+count);
     }
 
     /*
