@@ -14,24 +14,24 @@ public class CommonLoopAlgorithms
         double sum = 0;
         double average = 0;
         int count = 0;
-        
+
         System.out.println( "Enter a series of numbers (any letter to quit)" );
-        
+
         while( s.hasNextDouble())
         {
             double value = s.nextDouble();
             sum += value;
             count++;
         }
-        
+
         if( count > 0 )
         {
             average = sum / count;
         }
-        
+
         System.out.println( "sum: " + sum + " average: " + average );
     }
-    
+
     /*
      * Loop Algorithm #2: Counting Matches
      * reads a series of numbers (ends with a letter)
@@ -42,8 +42,21 @@ public class CommonLoopAlgorithms
      */
     public static void countMatches()
     {
-    }
-    
+        Scanner s = new Scanner( System.in );
+        int count = 0;
+        int value = 0;
+        System.out.println( "Enter value: ");
+        while (s.hasNextInt())
+        {
+            value = s.nextInt();
+            if (value > 100)
+            {
+                count +=1;
+            }
+        }
+        System.out.println( "Count: " + count );
+    }   
+
     /*
      * Loop Algorithm #3: Finding the First Match
      * reads a series of words separated by whitespace
@@ -52,10 +65,29 @@ public class CommonLoopAlgorithms
      * 
      * ORANGE GROUP
      */
-    public static void findFirstMatch()
-    {
+    public static void findFirstMatch() {
+        Scanner s = new Scanner( System.in );
+        String inp;
+        System.out.println("Please Enter Stuff: ");
+        inp = s.nextLine();
+        int whitespace = 0;
+        int pwhitespace = 0;
+        int count = 0;
+        for(int i = 0; i<inp.length(); i++) {
+            String test = inp.substring(i, i+1);
+            if (test.compareTo(" ") == 0) {
+                pwhitespace = whitespace;
+                whitespace = i;
+                count++;
+            }
+            if (whitespace-pwhitespace > 5) {
+                break;
+            }
+        }
+        System.out.println("We read "+count+" words.");
+
     }
-    
+
     /*
      * Loop Algorithm #4: Prompting until a Match Is Found
      * prompts the user to enter a positive integer less than 100
@@ -69,7 +101,7 @@ public class CommonLoopAlgorithms
     {
         Scanner s = new Scanner( System.in );
         int num = 101;
-        
+
         do
         {
             System.out.println("Enter an Integer");
@@ -78,7 +110,7 @@ public class CommonLoopAlgorithms
         while( num > 100 || num < -1 );
         System.out.println("You entered a value that matched the criteria");
     }
-    
+
     /*
      * Loop Algorithm #5.1: findMax
      * reads a series of numbers (ends with a letter)
@@ -90,13 +122,12 @@ public class CommonLoopAlgorithms
     {
         Scanner s = new Scanner( System.in );
         double num;
-        
+
         System.out.println( "Enter a series of numbers (any letter to quit)" );
-        
-        
+
         if (s.hasNextDouble()) {
             num = s.nextDouble();
-            
+
             while( s.hasNextDouble())
             {
                 double value = s.nextDouble();
@@ -104,13 +135,13 @@ public class CommonLoopAlgorithms
                     num = value;
                 }
             } 
-            
+
             System.out.println(num + " is the largest number.");
         } else {
             System.out.println("You didn't enter a number. How dare you.");
         }
     }
-    
+
     /*
      * Loop Algorithm #5.2: findMin
      * reads a series of numbers (ends with a letter)
@@ -122,12 +153,12 @@ public class CommonLoopAlgorithms
     {
         Scanner s = new Scanner( System.in );
         double num;
-        
+
         System.out.println( "Enter a series of numbers (any letter to quit)" );
-        
+
         if (s.hasNextDouble()) {
             num = s.nextDouble();
-            
+
             while( s.hasNextDouble())
             {
                 double value = s.nextDouble();
@@ -135,13 +166,13 @@ public class CommonLoopAlgorithms
                     num = value;
                 }
             } 
-            
+
             System.out.println(num + " is the smallest number.");
         } else {
             System.out.println("You didn't enter a number. How dare you.");
         }
     }
-    
+
     /*
      * Loop Algorithm #6: Compare Adjacent Values
      * reads a series of numbers (ends with a letter)
@@ -152,20 +183,20 @@ public class CommonLoopAlgorithms
     public static void compareAdjacent()
     {
         Scanner s = new Scanner(System.in);
-       boolean isAdjacent = false;
-       int old = -1;
-       int current = 0;
-       boolean isFirst = true; 
-       System.out.print("Enter a number (letter to quit): ");
-       while(s.hasNextInt()) {
-           
-           System.out.print("Enter a number (letter to quit): "); 
-           current = s.nextInt();
-           if(!isAdjacent && old == current &&!isFirst) {
-               isAdjacent = true;
-           }
-           old = current;
-           isFirst = false;
+        boolean isAdjacent = false;
+        int old = -1;
+        int current = 0;
+        boolean isFirst = true; 
+        System.out.print("Enter a number (letter to quit): ");
+        while(s.hasNextInt()) {
+
+            System.out.print("Enter a number (letter to quit): "); 
+            current = s.nextInt();
+            if(!isAdjacent && old == current &&!isFirst) {
+                isAdjacent = true;
+            }
+            old = current;
+            isFirst = false;
         }
         if(isAdjacent) {
             System.out.println("Adjacent!");
