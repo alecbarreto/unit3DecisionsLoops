@@ -67,6 +67,16 @@ public class CommonLoopAlgorithms
      */
     public static void promptUntilMatch()
     {
+        Scanner s = new Scanner( System.in );
+        int num = 101;
+        
+        do
+        {
+            System.out.println("Enter an Integer");
+            num = s.nextInt();
+        } 
+        while( num > 100 || num < -1 );
+        System.out.println("You entered a value that matched the criteria");
     }
     
     /*
@@ -78,6 +88,27 @@ public class CommonLoopAlgorithms
      */
     public static void findMax()
     {
+        Scanner s = new Scanner( System.in );
+        double num;
+        
+        System.out.println( "Enter a series of numbers (any letter to quit)" );
+        
+        
+        if (s.hasNextDouble()) {
+            num = s.nextDouble();
+            
+            while( s.hasNextDouble())
+            {
+                double value = s.nextDouble();
+                if (value > num) {
+                    num = value;
+                }
+            } 
+            
+            System.out.println(num + " is the largest number.");
+        } else {
+            System.out.println("You didn't enter a number. How dare you.");
+        }
     }
     
     /*
@@ -89,6 +120,26 @@ public class CommonLoopAlgorithms
      */
     public static void findMin()
     {
+        Scanner s = new Scanner( System.in );
+        double num;
+        
+        System.out.println( "Enter a series of numbers (any letter to quit)" );
+        
+        if (s.hasNextDouble()) {
+            num = s.nextDouble();
+            
+            while( s.hasNextDouble())
+            {
+                double value = s.nextDouble();
+                if (value < num) {
+                    num = value;
+                }
+            } 
+            
+            System.out.println(num + " is the smallest number.");
+        } else {
+            System.out.println("You didn't enter a number. How dare you.");
+        }
     }
     
     /*
@@ -100,7 +151,26 @@ public class CommonLoopAlgorithms
      */
     public static void compareAdjacent()
     {
+        Scanner s = new Scanner(System.in);
+       boolean isAdjacent = false;
+       int old = -1;
+       int current = 0;
+       boolean isFirst = true; 
+       System.out.print("Enter a number (letter to quit): ");
+       while(s.hasNextInt()) {
+           
+           System.out.print("Enter a number (letter to quit): "); 
+           current = s.nextInt();
+           if(!isAdjacent && old == current &&!isFirst) {
+               isAdjacent = true;
+           }
+           old = current;
+           isFirst = false;
+        }
+        if(isAdjacent) {
+            System.out.println("Adjacent!");
+        } else {
+            System.out.println("Not Adjacent!");
+        }
     }
-    
-    
 }
